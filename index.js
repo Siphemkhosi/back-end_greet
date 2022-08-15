@@ -43,7 +43,7 @@ app.get("/", (req, res) => {
     language: greetings.getGreet(),
   
     counter: greetings.counter(),
-    // validation: greetings.setUserValidation(req.body.name,req.body.radioButn),
+     validation: greetings.setUserValidation(req.body.name,req.body.radioButn),
    
   });
 });
@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 app.post('/greet', (req,res) => {
   greetings.setGreet(req.body.name,req.body.radioButn);
   greetings.storingNames(req.body.name);
-  req.flash('info', greetings.setGreet(req.body.name,req.body.radioButn));
+  req.flash('info', greetings.setUserValidation(req.body.name,req.body.radioButn));
   
   res.redirect('/');
 })
