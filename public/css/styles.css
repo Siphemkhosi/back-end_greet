@@ -1,0 +1,150 @@
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .entry{
+    margin-bottom:6px;
+    width: 400px;
+    height: 50px;
+    background-color: rgb(248, 158, 67);
+    color:red;
+    /* font-size:xx-large; */
+    font-size: 8px;
+  }
+  .name {
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  .butns {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+  
+  }
+  .reset{
+      margin-left: 10px;
+      background-color:rgb(248, 158, 67);
+    
+  }
+
+  h1{
+    margin-left:40px;
+  }
+  
+  body {
+    background-color: #eb5951 !important;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sortingForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  label {
+    margin-right: 10px;
+    font-weight: 600;
+    font-size: xx-large;
+  }
+  
+  .count {
+    margin-bottom: 8px;
+    margin-left: 10px;
+    font-size: 20px;
+    padding: 10px;
+    border: 2px solid;
+    background-color: #8a6298;
+    border-radius: 10px;
+  }
+  
+  .inputname {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+  .languages {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .response {
+    margin-top: 10px;
+    /* color: blue;
+      background-color: coral; */
+  }
+  button {
+    cursor: pointer;
+    border-style: none;
+    border-radius: 4px !important;
+    padding: 20px;
+    font-size: 15px;
+    color: white;
+    background-color: #50424d;
+  }
+  
+  /* media queries */
+  
+  
+  @media (min-width: 800px) and (max-width: 1105px){
+  h1{
+  font-size:3em !important;
+  }
+   
+    .count {
+      margin-bottom: 8px;
+      margin-left: 10px;
+      font-size: 40px;
+      padding: 10px;
+      border: 2px solid;
+      background-color: #8a6298;
+      border-radius: 10px;
+    }
+    label {
+      margin-right: 10px;
+      font-weight: 500;
+      font-size: 40px !important;
+    }
+    body {
+      background-color: #eb5951 !important;
+      min-height: 100vh;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .inputname {
+      margin-bottom: 10px;
+      padding: 30px;
+      width: 500px;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+    button {
+      cursor: pointer;
+      border-style: none;
+      border-radius: 4px !important;
+      padding: 25px;
+      font-size: 25px !important;
+      color: white;
+      background-color: #50424d;
+    }
+    .languages {
+    font-size: 25px !important;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+  }
