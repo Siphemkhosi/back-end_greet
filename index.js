@@ -31,7 +31,7 @@ app.engine(
   })
 );
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3007;
 app.listen(port);
 console.log(`listen to server: http://localhost:${port}`);
 
@@ -39,14 +39,17 @@ console.log(`listen to server: http://localhost:${port}`);
 app.get("/", (req, res) => {
  
   res.render("index", {
-    userName: greetings.getGreet(),
+    userName: greetings.getGreet(greetings.firstName, greetings.languages),
+    // userName: greetings.setGreet(),
+
     language: greetings.getGreet(),
   
     counter: greetings.counter(),
-     validation: greetings.setUserValidation(req.body.name,req.body.radioButn),
-   
+  
+  
   });
 });
+
 
 // app.get('/addFlash', function (req, res) {
 //   req.flash('info', 'This is a flash message');
@@ -54,24 +57,40 @@ app.get("/", (req, res) => {
 // });
 
 
-app.post('/greet', (req,res) => {
-  greetings.setGreet(req.body.name,req.body.radioButn);
-  greetings.storingNames(req.body.name);
-  req.flash('info', greetings.setUserValidation(req.body.name,req.body.radioButn));
+// app.post('/greet', (req,res) => {
+//   greetings.setGreet(req.body.name,req.body.radioButn);
+//   greetings.storingNames(req.body.name);
+//   req.flash('info', greetings.setUserValidation(req.body.name,req.body.radioButn));
   
-  res.redirect('/');
-})
+//   res.redirect('/');
+// })
 
-// app.post("/greet", (req, res) => {
-//   let name = req.body.name;  let language =  req.body.radioButn;
-//   if(name  && language === true){
-//  greetings.setGreet(name, language);
-//  greetings.storingNames(name);
-//   }else{
-//     req.flash('info', greetings.setUserValidation(name, language));
-//   }
+app.post("/greet", (req, res) => {
 
-//   res.redirect("/");
-// });
+  let name = req.body.name;  let language =  req.body.radioButn;
+  if(name  && language){
+ greetings.setGreet(name, language);
+ 
+  }else{
+    req.flash('info', greetings.setUserValidation(name, language));
+  }
+ greetings.firstName = req.body.name
+ greetings.languages = req.body.radioButn
+ greetings.storingNames(greetings.firstName);
+  res.redirect("/");
+});
+app.get("/greetedNames", (req, res) => {
+  console.log(req.body)
+  res.render("/greetedNames", {
+    userName:greetings.greetedNames(),
+    userName:greetings.counter(greetings.firstName),
+  })
+});
 
-
+app.post("/greetedNames", (req, res)=> {
+  greetings.firstName = req.body.name
+  greetings.languages = req.body.radioButn
+  greetings.storingNames(greetings.firstName);
+  greetings.greetedNames();
+   res.redirect("/");
+});
