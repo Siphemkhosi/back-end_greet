@@ -31,7 +31,7 @@ app.engine(
   })
 );
 
-const port = process.env.PORT || 3007;
+const port = process.env.PORT || 3009;
 app.listen(port);
 console.log(`listen to server: http://localhost:${port}`);
 
@@ -80,10 +80,11 @@ app.post("/greet", (req, res) => {
   res.redirect("/");
 });
 app.get("/greetedNames", (req, res) => {
-  console.log(req.body)
-  res.render("/greetedNames", {
-    userName:greetings.greetedNames(),
-    userName:greetings.counter(greetings.firstName),
+  // console.log(req.body)
+  res.render("greetedNames", {
+   nameList: greetings.listNames(),
+
+
   })
 });
 
@@ -93,4 +94,26 @@ app.post("/greetedNames", (req, res)=> {
   greetings.storingNames(greetings.firstName);
   greetings.greetedNames();
    res.redirect("/");
+});
+
+// app.get("/counter", (req, res) => {
+  
+//   res.render("counter", {
+//    times: greetings.greetedThisTimes(),
+//   })
+// });
+app.get("/counter/:name", (req, res)=> {
+
+  // greetings.firstName = req.body.name
+  // greetings.languages = req.body.radioButn
+  // greetings.storingNames(greetings.firstName);
+  // greetings.greetedNames();
+  // greetings.counter();
+  let times = req.params.name;
+  greetings.counterUser(times)
+  res.render('counter',{ 
+   userName: times,
+   number: greetings.counterUser(times)
+  
+});
 });

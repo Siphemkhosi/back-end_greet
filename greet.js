@@ -46,7 +46,9 @@ module.exports = function Greetings() {
       } else {
         nameMapping[name]++;
       }
+
     }
+    // console.log(nameMapping);
   }
 
   function getGreet() {
@@ -57,10 +59,30 @@ module.exports = function Greetings() {
     return nameMapping;
   }
 
+  function listNames(){
+    let names = Object.keys(nameMapping);
+    return names;
+  }
   function counter() {
     let names = Object.keys(nameMapping);
     return names.length;
+  
   }
+function greetedThisTimes(name){
+  let names = Object.keys(nameMapping);
+  var output = Object.values(names.reduce((nameMapping, { name }) => {
+    if (nameMapping[name] === undefined)
+       nameMapping[name] = { name: names, occurrences: 1 };
+    else
+       nameMapping[name].occurrences++;
+    return nameMapping;
+ }, {}));
+ console.log(output);
+}
+function counterUser(name){
+return nameMapping[name];
+}
+
 
   return {
  greetedNames,
@@ -69,9 +91,12 @@ module.exports = function Greetings() {
     setUserValidation,
     // getInput,
     // errorMessage,
+    listNames,
     storingNames,
 firstName,
 languages,
     counter,
+    greetedThisTimes,
+    counterUser,
   };
 };
