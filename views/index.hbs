@@ -24,17 +24,29 @@
   <nav class="navbar navbar-style">
 <div class="container">
 <div class="navbar-hearder">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#micon">
+    <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+  </button>
   <a href=""><img class="logo" src="/public/css/Grey.png"> </a>
 </div>
+<div class="collapse navbar-collapse" id="micon">
+<ul class="nav navbar-nav navbar-right" >
+  <li><a href="/home">Home</a></li>
+ <li><a href="/greetedNames" >Greeted</a></li>
+    <li><a href="../counter/{{userName}}">Times</a></li>
+</ul>
 
 </div>
-
+</div>
   </nav>
+  
 </header>
 {{!-- end of bootstrap --}}
    <div class="actions">
     
-    <form action="/greet" method="POST">
+    <form action="/greet" method="POST" class="form1">
  <h1>Greeting App</h1>
 
         {{#if messages.info}}
@@ -53,7 +65,7 @@
           placeholder="enter your name"
           {{!-- value="" --}}
         />
-        <span class="greeted_count count">{{counter}}</span>
+        <span class="greeted_count count" value="0">{{counter}}</span>
         {{!-- <span class="greetedcount count">{{times}}</span> --}}
       </div>
       <div class="languages">
@@ -63,23 +75,22 @@
       </div>
       <br />
       <div class="butns">
-        <button type="submit">Greet</button>
-        <button type="reset" class="reset">Reset</button>
+        <button type="submit" class="submit" >Greet</button>
+    
+        {{!-- <input type="reset" value="RESET"/> --}}
       </div>
     <a href="/greetedNames" class="greeted">Greeted Names</a>
-      <p class="response" style="text-align:center;">{{userName}} </p>
+      <p class="response" style="text-align:center;">{{userName}} {{number}} </p>
     </form>
+ <form action="/clear" Method="GET" class="form2"><button type="submit" class="reset">Reset</button></form>
    
-  </span>
-    
     <div class="storage">
       <ul class="list_names">
       
       </ul>
     </div>
     </div>
-    <script src="./app.fact.js"></script>
-    <script src="./js/app.dom.js"></script>
+    
   </body>
 
 </html>

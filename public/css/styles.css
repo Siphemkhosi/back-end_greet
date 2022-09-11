@@ -12,16 +12,48 @@
 .header{
   height: vh;
 }
+.icon-bar{
+  background: #eb5951 ;
+} 
+.greets{
+  width: 500px;
+  color:aqua;
+}
+ li a{
+  color: #eb5951;
+  font-weight: 500;
+}
+
+li{
+  color: #eb5951;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  text-transform: uppercase;
+}
 .navbar-style{
   box-shadow: 0 5px 10px #eb5951;
+  text-transform: uppercase;
 }
 h3{
  background-color:  rgb(154, 51, 51) ;
 }
-form {
+.actionsform{
+  display: flex;
+  justify-content: center;
+}
+.form1 {
     display: flex;
     flex-direction: column;
     /* max-width: 400px; */
+    justify-content: center;
+    align-items: center;
+  }
+  .form2{
+    display: flex;
+    flex-direction: column;
+margin-top: 80px;
+margin-right: 0px;
     justify-content: center;
     align-items: center;
   }
@@ -73,9 +105,10 @@ border: green;
       background-color:rgb(221, 126, 37);
     
   }
-
-  h1{
+h1{
     margin-left:40px;
+
+
   }
   
   body {

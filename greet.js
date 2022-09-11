@@ -83,6 +83,11 @@ function counterUser(name){
 return nameMapping[name];
 }
 
+function reset(){
+ 
+nameMapping = {};
+}
+
 
   return {
  greetedNames,
@@ -92,11 +97,14 @@ return nameMapping[name];
     // getInput,
     // errorMessage,
     listNames,
+    reset,
     storingNames,
 firstName,
 languages,
     counter,
     greetedThisTimes,
     counterUser,
-  };
+  }
 };
+
+// export default Greetings;
