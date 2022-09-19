@@ -1,7 +1,6 @@
 {
   "name": "back-end_greet",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -144,5 +143,7 @@
   "bugs": {
     "url": "https://github.com/Siphemkhosi/back-end_greet/issues"
   },
-  "homepage": "https://github.com/Siphemkhosi/back-end_greet#readme"
+  "homepage": "https://github.com/Siphemkhosi/back-end_greet#readme",
+  "devDependencies": {},
+  "description": ""
 }

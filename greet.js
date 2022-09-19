@@ -2,11 +2,10 @@ module.exports = function Greetings() {
   let nameMapping = {};
  let firstName ="";
  let languages ="";
-  // let error = "";
+
+
   function setUserValidation(name, language) {
     let message ="";
-    // let userVAlidation = ;
-
     if (name === "" && !language ) {
     message = "Please enter a name and  select language";
     } else if (!(/^[A-Za-z]+$/.test(name) )) {
@@ -20,13 +19,8 @@ module.exports = function Greetings() {
     return message;
   }
 
-  // function getInput(){
-  //   return firstName;
-  //   }
 
   let greetMessage = "";
-  // let validation = setUserValidation();
-
   function setGreet(name, language) {
     if (language === "xhosa") {
       greetMessage = `molo ${name}`;
@@ -48,7 +42,7 @@ module.exports = function Greetings() {
       }
 
     }
-    // console.log(nameMapping);
+  
   }
 
   function getGreet() {
@@ -107,4 +101,3 @@ languages,
   }
 };
 
-// export default Greetings;

@@ -8,89 +8,104 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/bootstrap-grid.css" />
     <title>My web development learning page</title>
- 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
 
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    ></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    ></script>
     <link rel="stylesheet" href="css/styles.css" />
 
   </head>
 
   <body>
-<header class="header">
-  <nav class="navbar navbar-style">
-<div class="container">
-<div class="navbar-hearder">
-  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#micon">
-    <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-  </button>
-  <a href=""><img class="logo" src="/public/css/Grey.png"> </a>
-</div>
-<div class="collapse navbar-collapse" id="micon">
-<ul class="nav navbar-nav navbar-right" >
-  <li><a href="/home">Home</a></li>
- <li><a href="/greetedNames" >Greeted</a></li>
-    <li><a href="../counter/{{userName}}">Times</a></li>
-</ul>
+    <header class="header">
+      <nav class="navbar navbar-style">
+        <div class="container">
+          <div class="navbar-hearder">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#micon"
+            >
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          
+          </div>
+          <div class="collapse navbar-collapse" id="micon">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/home">Home</a></li>
+              <li><a href="/greetedNames">Greeted</a></li>
+              <li><a href="../counter/{{userName}}">Times</a></li>
+            </ul>
 
-</div>
-</div>
-  </nav>
-  
-</header>
-{{!-- end of bootstrap --}}
-   <div class="actions">
-    
-    <form action="/greet" method="POST" class="form1">
- <h1>Greeting App</h1>
+          </div>
+        </div>
+      </nav>
+
+    </header>
+    {{! end of bootstrap }}
+    <div class="actions">
+
+      <form action="/greet" method="POST" class="form1">
+        <h1>Greeting App</h1>
 
         {{#if messages.info}}
-<div style="text-align:center; " class="entry">
-    <h3> {{messages.info}}</h3>
-</div>
-{{/if}}
-      <div class="sortingForm">
-        <label class="name" for="Name">Name</label>
-        <input
-          class="inputname"
-          {{!-- pattern="[a-zA-Z'-'\s]*" --}}
-          id="input"
-          type="text"
-          name="name"
-          placeholder="enter your name"
-          {{!-- value="" --}}
-        />
-        <span class="greeted_count count" value="0">{{counter}}</span>
-        {{!-- <span class="greetedcount count">{{times}}</span> --}}
+          <div style="text-align:center; " class="entry">
+            <h3> {{messages.info}}</h3>
+          </div>
+        {{/if}}
+        <div class="sortingForm">
+          <label class="name" for="Name">Name</label>
+          <input
+            class="inputname"
+            id="input"
+            type="text"
+            name="name"
+            placeholder="enter your name"
+          />
+          <span class="greeted_count count" value="0">{{counter}}</span>
+
+        </div>
+        <div class="languages">
+          <input type="radio" name="radioButn" value="xhosa" />IsiXhosa
+          <input type="radio" name="radioButn" value="english" />English
+          <input type="radio" name="radioButn" value="sisotho" />Sisotho
+        </div>
+        <br />
+        <div class="butns">
+          <button type="submit" class="submit">Greet</button>
+
+        </div>
+        <a href="/greetedNames" class="greeted">Greeted Names</a>
+       
+      </form>
+      <form action="/clear" Method="GET" class="form2">
+      <div class="flexing" ><button
+          type="submit"
+          class="reset"
+        >Reset</button>  <p class="response" style="text-align:center;">{{userName}}
+          {{number}}
+        </p>
+        </div></form>
+
+      <div class="storage">
+        <ul class="list_names">
+
+        </ul>
       </div>
-      <div class="languages">
-        <input type="radio" name="radioButn" value="xhosa" />IsiXhosa
-        <input type="radio" name="radioButn" value="english" />English
-        <input type="radio" name="radioButn" value="sisotho" />Sisotho
-      </div>
-      <br />
-      <div class="butns">
-        <button type="submit" class="submit" >Greet</button>
-    
-        {{!-- <input type="reset" value="RESET"/> --}}
-      </div>
-    <a href="/greetedNames" class="greeted">Greeted Names</a>
-      <p class="response" style="text-align:center;">{{userName}} {{number}} </p>
-    </form>
- <form action="/clear" Method="GET" class="form2"><button type="submit" class="reset">Reset</button></form>
-   
-    <div class="storage">
-      <ul class="list_names">
-      
-      </ul>
     </div>
-    </div>
-    
+
   </body>
 
 </html>
