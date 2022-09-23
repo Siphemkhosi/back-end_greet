@@ -145,7 +145,10 @@
   },
   "homepage": "https://github.com/Siphemkhosi/back-end_greet#readme",
   "devDependencies": {
-    "mocha":"10.0.0"
+    "mocha": "10.0.0"
   },
-  "description": "[![Node.js CI](https://github.com/Siphemkhosi/back-end_greet/actions/workflows/node.js.yml/badge.svg)](https://github.com/Siphemkhosi/back-end_greet/actions/workflows/node.js.yml)"
+  "description": "[![Node.js CI](https://github.com/Siphemkhosi/back-end_greet/actions/workflows/node.js.yml/badge.svg)](https://github.com/Siphemkhosi/back-end_greet/actions/workflows/node.js.yml)",
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
+  }
 }
