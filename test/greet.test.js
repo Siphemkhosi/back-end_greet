@@ -1,36 +1,65 @@
 const assert = require('assert');
-// const CategoryService = require('../services/category-service');
-const  Greetings = require('../js/greet');
 
-const pgp = require('pg-promise')();
 
-// we are using a special test database for the tests
-const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/greetingsdatabase';
 
-const db = pgp(connectionString);
 
-describe('The basic database web app', function(){
+const Greetings = require('../greet');
 
-    // beforeEach(async function(){
-    //     // clean the tables before each test run
-    //     await db.none("add from products;");
-    //     await db.none("delete from categories;");
-    // });
+describe("The Greetings factory function", function () {
 
-    it('should pass the db test', async function(){
-        
-        // the Factory Function is called CategoryService
-        // let categoryService = CategoryService(db);
-        let greetings= Greetings(db);
-        await greetings.add({
-            username: "siphe"
-        });
 
-        let counter = await greetings.all();
-        assert.equal(1, siphe);
+    it(' it should return an error message if a name with non-aplhabetic characters is entered', function () {
+        let greetings = Greetings();
+        assert.equal("Write name in the correct format", greetings.setUserValidation("Siphe7", "english"))
+
     });
 
-    after(function(){
-        db.$pool.end
-    })
+
+    it('it should return an error message if there is no language selected', function () {
+
+        let greetings = Greetings();
+        assert.equal("Please select language", greetings.setUserValidation("Nela", null))
+
+    });
+
+    it('it should return an error message there is no name entered and language selected', function () {
+
+        let greetings = Greetings();
+        assert.equal("Please enter a name and  select language", greetings.setUserValidation("",))
+
+    });
+
+    
+
+
+    it('it should count the greeted names', function () {
+
+        let greetings = Greetings();
+        greetings.storingNames(["siphe"])
+        assert.equal(1, greetings.counter())
+        greetings.storingNames(["siphe", "nela"])
+        assert.equal(2, greetings.counter())
+     
+    });
+
+    it('it should greet the input name in the specified language', function () {
+
+        let greetings = Greetings();
+       greetings.setGreet("Thabo", "xhosa")
+       assert.equal("molo Thabo", greetings.getGreet("Thabo", "xhosa "))
+        greetings.setGreet("siphe", "english")
+        assert.equal("hello siphe", greetings.getGreet("siphe", "english "))
+       greetings.setGreet("Grace", "sisotho")
+       assert.equal("dumela Grace", greetings.getGreet("Grace", "sisotho "))
+       
+
+    });
+
 });
+
+
+
+
+
+
+

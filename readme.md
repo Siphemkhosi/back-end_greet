@@ -1,0 +1,1 @@
+[![Node.js CI](https://github.com/Siphemkhosi/back-end_greet/actions/workflows/node.js.yml/badge.svg)](https://github.com/Siphemkhosi/back-end_greet/actions/workflows/node.js.yml)

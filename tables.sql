@@ -5,5 +5,5 @@ CREATE TABLE greetuser(
     count INT not Null
 );
 
-`INSERT  INTO users (username,  count)
+`INSERT  INTO greetusers (username,  count)
 VALUES (${name}, ${counter})`;

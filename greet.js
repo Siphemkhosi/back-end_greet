@@ -60,8 +60,9 @@ module.exports = function Greetings() {
   function counter() {
     let names = Object.keys(nameMapping);
     return names.length;
-  
+ 
   }
+ 
 function greetedThisTimes(name){
   let names = Object.keys(nameMapping);
   var output = Object.values(names.reduce((nameMapping, { name }) => {

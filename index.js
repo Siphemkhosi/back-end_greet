@@ -5,13 +5,17 @@ const flash = require("express-flash");
 const session = require("express-session");
 const Greetings = require("./greet");
 const DataBaseFunction = require("./greetdata");
+const GreetData = require("./greetdata");
+const GreetRoutes = require("./routes/greetroutes");
+
+
 const app = express();
 const pool = require("./db");
 app.use(express.json());
 const pgp = require("pg-promise")();
 
 const DATABASE_URL =
-  process.env.DATABASE_URL || "postgresql://localhost:5432/greetingsdatabase";
+  process.env.DATABASE_URL || "postgresql://coders:codex123@localhost:5432/greetingsdatabase";
 
 const config = {
   connectionString: DATABASE_URL,
@@ -62,77 +66,20 @@ app.listen(port);
 console.log(`listen to server: http://localhost:${port}`);
 
 // db routes
-app.post("/greetuser", async (req, res) => {
-  console.log("siphe");
-  try {
-    const { name } = req.body;
-    console.log("name:" + name);
-    const { counter } = req.body;
-    const newUser = await pool.query(`INSERT INTO greetuser (username, count)
-VALUES (${name}, ${counter})`);
-    res.json(newUser);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
+const greetData = GreetData(db);
+const greetRoutes = GreetRoutes(greetData, greetings);
 
-// landing
-app.get("/", (req, res) => {
-  res.render("index", {
-    userName: greetings.getGreet(greetings.firstName, greetings.languages),
-    language: greetings.getGreet(),
-    counter: greetings.counter(),
-  });
-});
-
-app.post("/greet", async (req, res) => {
-  let name = req.body.name;
-  let language = req.body.radioButn;
-
-  if (name && language) {
-    greetings.setGreet(name, language);
-  } else {
-    req.flash("info", greetings.setUserValidation(name, language));
-  }
-  
-  greetings.storingNames(name);
-
-  try {
-    const user = await pool.query(
-      `SELECT * FROM greetuser WHERE (username = '${name}') `
-    );
-
-    if (user.rowCount !== 0) {
-      const newCounter = parseInt(user.rows[0].count) + 1;
-      await pool.query(
-        `UPDATE greetuser SET count = '${newCounter}' WHERE (username = '${name}') `
-      );
-    } else {
-      const counter = greetings.counter();
-      await pool.query(`INSERT INTO greetuser (username, count)
- VALUES ('${name}', '1')`);
-    }
-    
-  } catch (err) {
-    console.error(err.message);
-  }
-  res.redirect("/");
-});
+app.get("/", greetRoutes.home);
 
 
-app.get("/greetedNames", (req, res) => {
-  res.render("greetedNames", {
-    nameList: greetings.listNames(),
-  });
-});
+app.post("/greet", greetRoutes.greetUser);
 
-app.post("/greetedNames", (req, res) => {
-  greetings.firstName = req.body.name;
-  greetings.languages = req.body.radioButn;
-  greetings.storingNames(greetings.firstName);
-  greetings.greetedNames();
-  res.redirect("/");
-});
+
+app.get("/greetedNames", greetRoutes.greetedUser);
+
+
+app.post("/greetedNames", greetRoutes.greetedUsers);
+
 
 app.get("/counter/:name", (req, res) => {
  

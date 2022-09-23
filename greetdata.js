@@ -1,52 +1,29 @@
 
-// module.exports = function dataBaseFunction() {
-// const Greetings = require("./greet")
-// const pool = require("./db");
+module.exports = function GreetData(db) {
 
-// const greetings  res.render("index", {
-//     userName: greetings.getGreet(greetings.firstName, greetings.languages),
-//     language: greetings.getGreet(),
-//     counter: greetings.counter(),
-//   });  res.render("index", {
-//     userName: greetings.getGreet(greetings.firstName, greetings.languages),
-//     language: greetings.getGreet(),
-//     counter: greetings.counter(),
-//   });  res.render("index", {
-//     userName: greetings.getGreet(greetings.firstName, greetings.languages),
-//     language: greetings.getGreet(),
-//     counter: greetings.counter(),
-//   });
-//      async function data(){
-//         let name = greetings.name;  
-//         console.log(name);
-//         let language = greetings.language;
-//         try{
-//             const user = await pool.query(`SELECT * FROM greetuser WHERE (username = '${name}') `)
-//            if(user.rowCount !== 0){
-//              const newCounter = parseInt(user.rows[0].count) + 1;
-//              await pool.query(`UPDATE greetuser SET count = '${newCounter}' WHERE (username = '${name}') `)
-//             }else{
-//             const counter = greetings.counter();
-//              await pool.query(`INSERT INTO greetuser (username, count)
-//             VALUES ('${name}', '1')`);
-              
-               
-//             }
-//     }catch (err){
-//         console.error(err.message);
-//       };
-//      }
+async function storingData(name){
+    try {
+        const user = await db.manyOrNone(
+          `SELECT * FROM greetuser WHERE username = $1`,[name] 
+        );
+        console.log(user);
+        if (user.length > 0) {
+          const newCounter = parseInt(user[0].count) + 1;
+          await db.none(
+            `UPDATE greetuser SET count = $1 WHERE username = $2 `, [newCounter, name]
+          );
+        } else{
+        
+          await db.none(`INSERT INTO greetuser (username, count)
+     VALUES ($1, $2)`, [name, 1] )
+         };
+        
+      } catch (err) {
+        console.error(err.message);
+      }
+}
 
-
-//     async function reset(req, res){
-//         await db.clear()
-//         res.redirect('/')
-//     }
-
-//     return {
-//         data, 
-//         reset,
-
-
-//     }
-// }
+return{
+    storingData,
+}
+}
