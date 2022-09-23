@@ -131,7 +131,7 @@
     "xtend": "^4.0.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node index.js"
   },
   "repository": {
@@ -144,6 +144,8 @@
     "url": "https://github.com/Siphemkhosi/back-end_greet/issues"
   },
   "homepage": "https://github.com/Siphemkhosi/back-end_greet#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha":"10.0.0"
+  },
   "description": "[![Node.js CI](https://github.com/Siphemkhosi/back-end_greet/actions/workflows/node.js.yml/badge.svg)](https://github.com/Siphemkhosi/back-end_greet/actions/workflows/node.js.yml)"
 }
